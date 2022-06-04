@@ -3,6 +3,7 @@ let playerScore = 0;
 let computerScore = 0;
 let computerSelection;
 let playerSelection;
+let gameNumbers = 0;
 let startGame = document.getElementById('btn');
 
 const computerPlay = () => {
@@ -44,7 +45,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  for (i = 0; i < 5; i++) {
+  for (i = 0; i < gameNumbers; i++) {
     let playerSelection = prompt('Rock, Paper or Scissors').toLocaleLowerCase();
     let computerSelection = computerPlay();
     let resultValue = playRound(playerSelection, computerSelection);
@@ -60,7 +61,7 @@ function game() {
     console.log(
       `player: ${playerSelection} and  computer ${computerSelection}`
     );
-    console.log(result);
+    console.log(resultValue);
   }
   if (playerScore > computerScore) {
     console.log(`player won ${playerScore}`);
@@ -70,3 +71,9 @@ function game() {
     console.log('no winner');
   }
 }
+
+function start() {
+  gameNumbers = prompt('How many games do you want to play?');
+  game();
+}
+startGame.addEventListener('click', start);
